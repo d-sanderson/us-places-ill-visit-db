@@ -1,0 +1,22 @@
+- args:
+    tables:
+    - object_relationships:
+      - name: us_state
+        using:
+          foreign_key_constraint_on: state_id
+      table:
+        name: us_cities
+        schema: public
+    - array_relationships:
+      - name: us_cities
+        using:
+          foreign_key_constraint_on:
+            column: state_id
+            table:
+              name: us_cities
+              schema: public
+      table:
+        name: us_states
+        schema: public
+    version: 2
+  type: replace_metadata
